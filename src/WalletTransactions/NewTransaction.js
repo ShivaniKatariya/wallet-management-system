@@ -56,7 +56,7 @@ const NewTransaction = props => {
       setSuccessMsg('');
     }, 5000);
   };
-  console.log('Re render');
+
   const handleInput = (e) => {
     const value = e.target.value;
     const valueWithoutComas = value.replace(/,/g, '');

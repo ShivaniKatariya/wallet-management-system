@@ -132,22 +132,6 @@ exports.listOfTransactions = async (req, res) => {
   }
 };
 
-
-exports.listOfAllTransactions = async (req, res) => {
-  try {
-    const connection = await initializeServer();
-
-    const [transactionResults] = await connection.execute(
-      'SELECT * FROM Transactions'
-    )
-    res.status(200).json(transactionResults);
-  } catch (error) {
-    console.error(error);
-    log.error(error);
-    res.status(500).send('Internal Server Error');
-  }
-}
-
 exports.getWalletDetails = async (req, res) => {
   try {
     const { id } = req.params;

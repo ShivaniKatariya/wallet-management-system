@@ -4,12 +4,11 @@ import { useState } from 'react';
 import './Wallet.css';
 import { apiEndpoints } from '../apiConfig';
 import { generateUUID, isValidAmount } from '../common/utils';
-import { useRef } from 'react';
 
 const SetUpWallet = props => {
 
   const { setWalletId } = props;
-  const username = useRef();
+  const [username, setUsername] = useState();
   const [formattedAmount, setFormattedAmount] = useState('');
 
   const initializeWallet = (e) => {
@@ -21,7 +20,7 @@ const SetUpWallet = props => {
       signal: controller.signal,
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ id: wId, balance: formattedAmount.replace(/,/g, ''), name: username.current.value })
+      body: JSON.stringify({ id: wId, balance: formattedAmount.replace(/,/g, ''), name: username })
     }).then(res => res.json())
       .then(walletDetails => {
 
@@ -49,8 +48,8 @@ const SetUpWallet = props => {
     }
   };
 
-  const enableCreatingWallet = username && username.current && username.current.value && username.current.value.length;
-// add a comment
+  const enableCreatingWallet = username && username.length;
+
   return <div >
     <h3>Wallet Management System</h3>
     <div className="set-up-form-container">
@@ -59,7 +58,8 @@ const SetUpWallet = props => {
           Username
           <input className='form-input'
             type="text"
-            ref={username}
+            value={username}
+            onInput={(e) => setUsername(e.target.value)}
             required
           />
         </label>
@@ -87,6 +87,8 @@ const SetUpWallet = props => {
   </div>;
 };
 
-SetUpWallet.propTypes = {};
+SetUpWallet.propTypes = {
+  setWalletId: PropTypes.func
+};
 
 export default SetUpWallet;

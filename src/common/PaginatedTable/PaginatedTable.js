@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { formatIfDate } from '../utils';
 import './table.css';
 
-const PaginatedTable = ({ columns, dataset, itemsPerPage, currentPage, setCurrentPage }) => {
+const PaginatedTable = ({ columns, dataset, itemsPerPage, currentPage, setCurrentPage, sortEnableColumns }) => {
   const [sortConfig, setSortConfig] = useState({ column: null, order: 'asc' });
 
   const nextPage = () => {
@@ -14,8 +14,10 @@ const PaginatedTable = ({ columns, dataset, itemsPerPage, currentPage, setCurren
   };
 
   const handleSort = (column) => {
-    const order = sortConfig.column === column && sortConfig.order === 'asc' ? 'desc' : 'asc';
-    setSortConfig({ column, order });
+    if (sortEnableColumns.includes(column)) {
+      const order = sortConfig.column === column && sortConfig.order === 'asc' ? 'desc' : 'asc';
+      setSortConfig({ column, order });
+    }
   };
 
   const sortedDataset = () => {

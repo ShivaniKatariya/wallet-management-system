@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import PropTypes from 'prop-types';
 import { useState } from 'react';
 import PaginatedTable from '../common/PaginatedTable/PaginatedTable';
 import { apiEndpoints } from '../apiConfig';
@@ -8,7 +7,7 @@ import { Link } from 'react-router-dom';
 import LoadingSpinner from '../common/Loading/Spinner';
 import ExportCsvLink from '../common/ExportCsv/ExportCsvLink';
 
-const WalletTransactions = props => {
+const WalletTransactions = () => {
 
   const [currentPage, setCurrentPage] = useState(1);
   const [tableData, setTableData] = useState({ columns: [], dataset: [] });
@@ -16,8 +15,7 @@ const WalletTransactions = props => {
   const [exportData, setExportData] = useState();
   const [loading, setLoading] = useState();
 
-  let itemsPerPage = 4;
-  console.log('RENDER')
+  let itemsPerPage = 10;
   const storedWalletId = localStorage.getItem('walletId');
 
   const fetchTransactions = () => {
@@ -83,6 +81,7 @@ const WalletTransactions = props => {
 
   useEffect(() => {
     fetchTransactions();
+    // eslint-disable-next-line
   }, [currentPage, storedWalletId]);
 
   if (!storedWalletId) return <Link style={{ float: 'right' }} to="/wallet">Please setup a wallet</Link>
@@ -99,6 +98,7 @@ const WalletTransactions = props => {
       itemsPerPage={itemsPerPage}
       currentPage={currentPage}
       setCurrentPage={setCurrentPage}
+      sortEnableColumns={['amount', 'date']}
     />
   </div>;
 };
