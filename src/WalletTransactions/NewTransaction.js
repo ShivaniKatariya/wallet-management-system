@@ -46,7 +46,7 @@ const NewTransaction = props => {
     return () => { controller.abort() }
 
   };
-
+// console.log()
   const resetForm = (e) => {
     e.target.reset();
     setTransactionType('');
