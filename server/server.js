@@ -18,8 +18,6 @@ app.post('/transact/:walletId', creditOrDebitFromWallet);
 
 app.get('/transactions', listOfTransactions);
 
-app.get('/all-transactions', listOfAllTransactions);
-
 app.get('/wallet/:id', getWalletDetails);
 
 app.listen(PORT, () => {
