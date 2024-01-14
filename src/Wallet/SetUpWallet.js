@@ -50,7 +50,7 @@ const SetUpWallet = props => {
   };
 
   const enableCreatingWallet = username && username.current && username.current.value && username.current.value.length;
-
+// add a comment
   return <div >
     <h3>Wallet Management System</h3>
     <div className="set-up-form-container">
