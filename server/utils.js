@@ -5,10 +5,11 @@ const log = require('./logger').webLog;
 async function initializeServer() {
   try {
     return await mysql.createConnection({
-      host: 'localhost',
-      user: 'root',
-      password: '',
-      database: 'wallet_management_system',
+      host: 'db4free.net',
+      port: 3306,
+      user: 'username_wms_011',//
+      password: 'shivani0112',
+      database: 'wallet_0112',//
     });
   }
   catch (err) { console.error(err); }
