@@ -1,4 +1,4 @@
-const baseUrl = 'https://wallet-management-system.onrender.com/transactions';
+const baseUrl = 'https://wallet-management-system.onrender.com';
 
 export const apiEndpoints = {
   setup: `${baseUrl}/setup`,

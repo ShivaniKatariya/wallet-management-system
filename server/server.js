@@ -21,6 +21,6 @@ app.get('/transactions', listOfTransactions);
 app.get('/wallet/:id', getWalletDetails);
 
 app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
+  console.log(`Server is running on PORT :${PORT}`);
   log.info(`Server is running on PORT: ${PORT}`);
 });
