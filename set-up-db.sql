@@ -1,3 +1,7 @@
+CREATE DATABASE wallet_management_system;
+
+USE DATABASE wallet_management_system;
+
 CREATE TABLE Wallets (
   id VARCHAR(36) PRIMARY KEY,
   balance DECIMAL(20, 4) NOT NULL,
